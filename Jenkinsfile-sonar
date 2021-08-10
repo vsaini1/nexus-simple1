@@ -17,8 +17,8 @@ pipeline {
         }
         stage('SonarQube Analysis'){
             steps{
-                withSonarQubeEnv(credentialsId: 'sonar6') {
-                    sh 'mvn sonar:sonar'
+                withSonarQubeEnv('sonar6') {
+                    sh script: 'mvn sonar:sonar'
                 }
                 //nexusArtifactUploader artifacts: [[artifactId: 'simple-app', classifier: '', file: 'target/simple-app-1.0.0.war', type: 'war']], credentialsId: 'nexus-ul', groupId: 'in.javahome', nexusUrl: '10.177.89.241:35000', nexusVersion: 'nexus3', protocol: 'http', repository: 'simpleapp-release', version: '1.0.0'
             }}}}
